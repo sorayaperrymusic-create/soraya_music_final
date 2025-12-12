@@ -237,7 +237,6 @@ export function VideoPlayer({ videoUrl, audioUrl, className, onShare, autoplay =
         ref={videoRef}
         src={videoUrl}
         className="w-full h-full object-cover"
-        crossOrigin="anonymous"
         muted
         loop
         playsInline
