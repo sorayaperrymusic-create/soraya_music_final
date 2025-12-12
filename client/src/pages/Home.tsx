@@ -8,6 +8,7 @@ import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { ArrowDown, Heart, Music2, Play, Share2, Instagram, Twitter, Youtube, Music } from "lucide-react";
 import { useState, useRef } from "react";
+import type { AudioPlayerRef } from "@/components/AudioPlayer";
 import { Streamdown } from "streamdown";
 import { toast } from "sonner";
 
@@ -119,6 +120,7 @@ The production choices enhance the storytelling. The "showroom lights" and "bass
 export default function Home() {
   const [currentTime, setCurrentTime] = useState(0);
   const [shouldAutoplayVideo, setShouldAutoplayVideo] = useState(false);
+  const audioPlayerRef = useRef<AudioPlayerRef>(null);
   const handleShare = async () => {
     try {
       if (navigator.share) {
@@ -196,7 +198,12 @@ export default function Home() {
 
           <div className="flex items-center justify-center gap-4 pt-8 flex-wrap">
             <Button 
-              onClick={() => document.getElementById('player')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => {
+                document.getElementById('player')?.scrollIntoView({ behavior: 'smooth' });
+                setTimeout(() => {
+                  audioPlayerRef.current?.play();
+                }, 500);
+              }}
               className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-6 rounded-full shadow-[0_0_20px_rgba(0,243,255,0.4)] transition-all hover:scale-105"
             >
               <Music2 className="mr-2 h-5 w-5" /> Listen Now
@@ -246,6 +253,7 @@ export default function Home() {
           </div>
 
           <AudioPlayer
+            ref={audioPlayerRef}
             src="https://files.manuscdn.com/user_upload_by_module/session_file/105909607/vPEzkZEPYxxPkuYB.mp3"
             onTimeUpdate={setCurrentTime}
             className="sticky top-8 z-50"

@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { cn } from "@/lib/utils";
 import { Pause, Play, SkipBack, SkipForward, Volume2, VolumeX } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, forwardRef, useImperativeHandle } from "react";
 
 interface AudioPlayerProps {
   src: string;
@@ -10,8 +10,29 @@ interface AudioPlayerProps {
   className?: string;
 }
 
-export function AudioPlayer({ src, onTimeUpdate, className }: AudioPlayerProps) {
+export interface AudioPlayerRef {
+  play: () => void;
+  pause: () => void;
+}
+
+export const AudioPlayer = forwardRef<AudioPlayerRef, AudioPlayerProps>(function AudioPlayer({ src, onTimeUpdate, className }, ref) {
   const audioRef = useRef<HTMLAudioElement>(null);
+
+  // Expose play/pause methods to parent component
+  useImperativeHandle(ref, () => ({
+    play: () => {
+      if (audioRef.current) {
+        audioRef.current.play();
+        setIsPlaying(true);
+      }
+    },
+    pause: () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      }
+    },
+  }));
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -169,4 +190,4 @@ export function AudioPlayer({ src, onTimeUpdate, className }: AudioPlayerProps) 
       </div>
     </div>
   );
-}
+});
