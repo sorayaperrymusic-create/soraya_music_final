@@ -283,7 +283,7 @@ export default function Home() {
           <div className="flex justify-center">
             <div className="w-full max-w-2xl">
               <VideoPlayer
-                videoUrl="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                videoUrl="https://files.manuscdn.com/user_upload_by_module/session_file/105909607/mwpNPLjuVSzqdxmV.mp4"
                 audioUrl="https://files.manuscdn.com/user_upload_by_module/session_file/105909607/vPEzkZEPYxxPkuYB.mp3"
                 onShare={handleVideoShare}
                 autoplay={shouldAutoplayVideo}
