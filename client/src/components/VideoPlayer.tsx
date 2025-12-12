@@ -31,9 +31,14 @@ export function VideoPlayer({ videoUrl, audioUrl, className, onShare, autoplay =
   // Sync video and audio playback
   useEffect(() => {
     const video = videoRef.current;
-    const audio = audioRef.current;
+    const audio = audioRef?.current;
 
-    if (!video || !audio) return;
+    if (!video || !audio) {
+      console.log("Video or audio not ready:", { video: !!video, audio: !!audio });
+      return;
+    }
+    
+    console.log("Setting up video-audio sync", { videoSrc: video.src, audioSrc: audio.src });
 
     // When video plays, play audio
     const handleVideoPlay = () => {
@@ -100,7 +105,7 @@ export function VideoPlayer({ videoUrl, audioUrl, className, onShare, autoplay =
       audio.removeEventListener("loadedmetadata", handleAudioLoadedMetadata);
       audio.removeEventListener("error", handleAudioError);
     };
-  }, []);
+  }, [audioRef]);
 
   // Update audio volume
   useEffect(() => {

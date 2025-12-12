@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { cn } from "@/lib/utils";
 import { Pause, Play, SkipBack, SkipForward, Volume2, VolumeX } from "lucide-react";
-import { useEffect, useRef, useState, forwardRef } from "react";
+import { useEffect, useRef, useState, forwardRef, useImperativeHandle } from "react";
 
 interface AudioPlayerProps {
   src: string;
@@ -11,9 +11,10 @@ interface AudioPlayerProps {
 }
 
 export const AudioPlayer = forwardRef<HTMLAudioElement, AudioPlayerProps>(function AudioPlayer({ src, onTimeUpdate, className }, ref) {
-  const internalAudioRef = useRef<HTMLAudioElement>(null);
-  // Properly handle the forwarded ref
-  const audioRef = ref ? (ref as any) : internalAudioRef;
+  const audioRef = useRef<HTMLAudioElement>(null);
+  
+  // Expose the audio element through the forwarded ref
+  useImperativeHandle(ref, () => audioRef.current as HTMLAudioElement, []);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
