@@ -119,7 +119,6 @@ The production choices enhance the storytelling. The "showroom lights" and "bass
 export default function Home() {
   const [currentTime, setCurrentTime] = useState(0);
   const [shouldAutoplayVideo, setShouldAutoplayVideo] = useState(false);
-  const audioPlayerRef = useRef<HTMLAudioElement>(null);
   const handleShare = async () => {
     try {
       if (navigator.share) {
@@ -283,11 +282,9 @@ export default function Home() {
           <div className="flex justify-center">
             <div className="w-full max-w-2xl">
               <VideoPlayer
-                videoUrl="https://files.manuscdn.com/user_upload_by_module/session_file/105909607/sphCgyDrsDHRblbG.mp4"
-                audioUrl="https://files.manuscdn.com/user_upload_by_module/session_file/105909607/vPEzkZEPYxxPkuYB.mp3"
+                videoUrl="https://files.manuscdn.com/user_upload_by_module/session_file/105909607/kfXoiyDaspzgzDRm.mp4"
                 onShare={handleVideoShare}
                 autoplay={shouldAutoplayVideo}
-                audioRef={audioPlayerRef}
               />
             </div>
           </div>
