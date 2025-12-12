@@ -145,24 +145,14 @@ export function VideoPlayer({ videoUrl, audioUrl, className, onShare, autoplay =
 
     if (isPlaying) {
       video.pause();
-      // Only pause audio if it's internal, not shared
-      if (!externalAudioRef) {
-        audio.pause();
-      }
+      audio.pause(); // Always pause audio (internal or external)
     } else {
       const videoPromise = video.play();
+      const audioPromise = audio.play();
       
-      // Only play audio if it's internal, not shared
-      if (!externalAudioRef) {
-        const audioPromise = audio.play();
-        Promise.all([videoPromise, audioPromise]).catch((error) => {
-          console.error("Playback error:", error);
-        });
-      } else {
-        videoPromise.catch((error) => {
-          console.error("Video playback error:", error);
-        });
-      }
+      Promise.all([videoPromise, audioPromise]).catch((error) => {
+        console.error("Playback error:", error);
+      });
     }
   };
 
