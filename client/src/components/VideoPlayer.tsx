@@ -5,14 +5,14 @@ import { Maximize, Minimize, Pause, Play, Share2, Volume2, VolumeX } from "lucid
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 
-interface SimpleVideoPlayerProps {
+interface VideoPlayerProps {
   videoUrl: string;
   className?: string;
   onShare?: () => void;
   autoplay?: boolean;
 }
 
-export function SimpleVideoPlayer({ videoUrl, className, onShare, autoplay = false }: SimpleVideoPlayerProps) {
+export function VideoPlayer({ videoUrl, className, onShare, autoplay = false }: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
