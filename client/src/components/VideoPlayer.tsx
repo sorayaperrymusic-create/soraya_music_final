@@ -237,6 +237,8 @@ export function VideoPlayer({ videoUrl, audioUrl, className, onShare, autoplay =
         className="w-full h-full object-cover"
         crossOrigin="anonymous"
         muted
+        loop
+        playsInline
       />
 
         {/* Play Button Overlay */}
