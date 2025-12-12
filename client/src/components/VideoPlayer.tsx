@@ -25,6 +25,8 @@ export function VideoPlayer({ videoUrl, audioUrl, className, onShare, autoplay =
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [videoError, setVideoError] = useState<string | null>(null);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
   // Sync video and audio playback
   useEffect(() => {
@@ -239,6 +241,18 @@ export function VideoPlayer({ videoUrl, audioUrl, className, onShare, autoplay =
         muted
         loop
         playsInline
+        autoPlay
+        onLoadedData={() => {
+          console.log("Video loaded successfully");
+          setIsVideoLoaded(true);
+          setVideoError(null);
+        }}
+        onError={(e) => {
+          console.error("Video error:", e);
+          const video = e.currentTarget;
+          setVideoError(`Video failed to load: ${video.error?.message || 'Unknown error'}`);
+        }}
+        onCanPlay={() => console.log("Video can play")}
       />
 
         {/* Play Button Overlay */}
@@ -254,6 +268,30 @@ export function VideoPlayer({ videoUrl, audioUrl, className, onShare, autoplay =
             )}
           </Button>
         </div>
+
+        {/* Loading State */}
+        {!isVideoLoaded && !videoError && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black/80">
+            <div className="text-center space-y-2">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+              <p className="text-white/60 text-sm">Loading video...</p>
+            </div>
+          </div>
+        )}
+
+        {/* Error Display */}
+        {videoError && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black/80">
+            <div className="text-center space-y-2 p-4">
+              <AlertCircle className="w-12 h-12 text-red-500 mx-auto" />
+              <p className="text-white text-sm">Video Error</p>
+              <p className="text-white/60 text-xs max-w-xs">{videoError}</p>
+              <Button onClick={() => window.location.reload()} variant="outline" size="sm" className="mt-2">
+                Reload Page
+              </Button>
+            </div>
+          </div>
+        )}
 
         {/* Time Display */}
         <div className="absolute bottom-4 left-4 text-xs text-white/60 font-mono bg-black/60 px-2 py-1 rounded backdrop-blur-sm">
