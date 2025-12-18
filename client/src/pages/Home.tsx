@@ -91,12 +91,12 @@ const reviewContent = `
 # Song Review: "Someone Who Wants Me"
 
 ## Overview
-This is a deeply personal and emotionally resonant track that captures a pivotal moment from a real Christmas party at a Lamborghini showroom. The song tells the story of an encounter with a girl—someone who sparked genuine connection and vulnerability. The production style is unmistakably influenced by Avicii's signature approach: atmospheric, progressive, and emotionally layered.
+This is a personal and resonant track inspired by the Christmas party at a Lamborghini showroom. The song tells the story of an encounter with someone who sparked genuine connection. The production style is unmistakably influenced by Avicii's signature approach: atmospheric, progressive, and emotionally layered.
 
 ## Lyrical Analysis
 
 ### Narrative Structure
-The song follows a three-act emotional arc that mirrors the actual events of the evening:
+The song follows a three-act emotional arc.
 
 **Act One: Initial Connection** - The opening establishes the scene with vivid sensory details: Christmas lights reflecting off a Lamborghini, champagne in the air, and the moment your eyes met the girl's. The lyrics effectively use biochemical language ("dopamine," "oxytocin," "serotonin") to convey the physiological rush of attraction and connection.
 
