@@ -123,13 +123,14 @@ export default function Home() {
   const audioPlayerRef = useRef<AudioPlayerRef>(null);
   const handleShare = async () => {
     try {
+      const shareUrl = 'https://sorayaperrymusic.com';
       if (navigator.share) {
         await navigator.share({
           title: 'Someone Who Wants Me - Soraya Perry',
-          url: https://sorayaperrymusic.com,
+          url: shareUrl,
         });
       } else {
-        await navigator.clipboard.writeText(window.location.href);
+        await navigator.clipboard.writeText(shareUrl);
         toast.success('Link copied to clipboard!');
       }
     } catch (err) {
@@ -141,13 +142,14 @@ export default function Home() {
 
   const handleVideoShare = async () => {
     try {
+      const shareUrl = 'https://sorayaperrymusic.com#video';
       if (navigator.share) {
         await navigator.share({
           title: 'Someone Who Wants Me - Official Video',
-          url: https://sorayaperrymusic.com,
+          url: shareUrl,
         });
       } else {
-        await navigator.clipboard.writeText(window.location.href + '#video');
+        await navigator.clipboard.writeText(shareUrl);
         toast.success('Video link copied to clipboard!');
       }
     } catch (err) {
@@ -450,16 +452,16 @@ export default function Home() {
           </div>
 
           <div className="flex justify-center gap-6 mb-12">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-primary transition-colors" title="Instagram">
+            <a href="https://instagram.com/sorayaperrymusic" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-primary transition-colors" title="Instagram">
               <Instagram className="w-6 h-6" />
             </a>
-            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-primary transition-colors" title="TikTok">
+            <a href="https://tiktok.com/@sorayaperrymusic" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-primary transition-colors" title="TikTok">
               <Music className="w-6 h-6" />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-primary transition-colors" title="Twitter">
+            <a href="https://twitter.com/sorayaperrymusic" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-primary transition-colors" title="Twitter">
               <Twitter className="w-6 h-6" />
             </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-primary transition-colors" title="YouTube">
+            <a href="https://youtube.com/@sorayaperrymusic" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-primary transition-colors" title="YouTube">
               <Youtube className="w-6 h-6" />
             </a>
           </div>
