@@ -126,7 +126,7 @@ export default function Home() {
       if (navigator.share) {
         await navigator.share({
           title: 'Someone Who Wants Me - Soraya Perry',
-          url: window.location.href,
+          url: https://sorayaperrymusic.com,
         });
       } else {
         await navigator.clipboard.writeText(window.location.href);
@@ -144,7 +144,7 @@ export default function Home() {
       if (navigator.share) {
         await navigator.share({
           title: 'Someone Who Wants Me - Official Video',
-          url: window.location.href + '#video',
+          url: https://sorayaperrymusic.com,
         });
       } else {
         await navigator.clipboard.writeText(window.location.href + '#video');
