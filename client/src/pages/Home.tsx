@@ -424,6 +424,14 @@ export default function Home() {
                 </div>
               </Card>
             </a>
+            <a href="https://open.spotify.com/track/7JN6OwpeC8YnW3MxfcUdZE?si=052e8e97d19042c8" target="_blank" rel="noopener noreferrer" className="group">
+              <Card className="bg-black/40 border-primary/20 hover:border-primary/50 hover:bg-primary/5 transition-all p-6 cursor-pointer h-full">
+                <div className="space-y-4">
+                  <h3 className="text-xl font-semibold text-primary group-hover:text-accent transition-colors">MISSING FROM ME</h3>
+                  <p className="text-white/60 text-sm">Listen on Spotify</p>
+                </div>
+              </Card>
+            </a>
           </div>
 
           <div className="text-center pt-8">
